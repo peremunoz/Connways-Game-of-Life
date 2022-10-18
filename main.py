@@ -36,16 +36,21 @@ def main():
 
     # Screen
     SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("Conway's Game of Life by Pere Muñoz - Iteration 0")
+    pygame.display.set_caption("Conway's Game of Life by Pere Muñoz")
 
-    if sys.argv[2] == 'random':
+    if len(sys.argv) > 2 and sys.argv[2] == 'random':
         print('Random mode')
-        state = [[random.randint(0, 1) for i in range(0, SCREEN_WIDTH, CELL_SIZE)] for j in range(0, SCREEN_HEIGHT, CELL_SIZE)]
+        state = [[random.randint(0, 1) for i in range(0, SCREEN_WIDTH, CELL_SIZE)] for j in
+                 range(0, SCREEN_HEIGHT, CELL_SIZE)]
     else:
         state = readInitialState()
 
     printStartingGame(SCREEN)
     drawGrid(SCREEN, state)
+    countAliveCells(state)
+
+    pygame.display.set_caption(
+        "Conway's Game of Life by Pere Muñoz - Iteration 0 - Cells alive: {}".format(CELLS_ALIVE))
 
     iterations = 0
 
@@ -59,7 +64,8 @@ def main():
                     pygame.quit()
                     quit()
         else:
-            sleep(0.3)
+            pass
+            # sleep(0.3)
         iterations += 1
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -68,9 +74,12 @@ def main():
         drawGrid(SCREEN, state)
         processState(state)
         pygame.display.update()
-        pygame.display.set_caption("Conway's Game of Life by Pere Muñoz - Iteration " + str(iterations))
+        pygame.display.set_caption(
+            "Conway's Game of Life by Pere Muñoz - Iteration " + str(iterations) + " - Cells alive: " + str(
+                CELLS_ALIVE))
 
     printGameOver(SCREEN)
+
 
 def printGameOver(screen):
     screen.fill(WHITE)
@@ -79,6 +88,7 @@ def printGameOver(screen):
     screen.blit(img, (SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 - 50))
     pygame.display.update()
     sleep(2)
+
 
 def printStartingGame(screen):
     screen.fill(WHITE)
@@ -96,6 +106,7 @@ def printStartingGame(screen):
     screen.fill(WHITE)
     pygame.display.update()
 
+
 def processState(state):
     for i in range(len(state)):
         for j in range(len(state[i])):
@@ -103,14 +114,17 @@ def processState(state):
 
 
 def processCell(state, i, j):
+    global CELLS_ALIVE
     neighbours = getNeighbours(state, i, j)
     if state[i][j] == 1:
         if neighbours < 2 or neighbours > 3:
+            CELLS_ALIVE -= 1
             return 0
         else:
             return 1
     else:
         if neighbours == 3:
+            CELLS_ALIVE += 1
             return 1
         else:
             return 0
@@ -131,6 +145,14 @@ def readInitialState():
         return matrix
 
 
+def countAliveCells(state):
+    global CELLS_ALIVE
+    CELLS_ALIVE = 0
+    for i in range(len(state)):
+        for j in range(len(state[i])):
+            CELLS_ALIVE += 1 if state[i][j] == 1 else 0
+
+
 def drawGrid(screen, state):
     global CELLS_ALIVE
     for i in range(0, SCREEN_WIDTH, CELL_SIZE):
@@ -139,8 +161,6 @@ def drawGrid(screen, state):
             pygame.draw.rect(screen, GREY, cellLine, 1)
             cell = pygame.Rect(i + 2, j + 2, CELL_SIZE - 4, CELL_SIZE - 4)
             normalizedState = state[int(j / CELL_SIZE)][int(i / CELL_SIZE)]
-            if normalizedState == 1:
-                CELLS_ALIVE += 1
             pygame.draw.rect(screen, BLACK if normalizedState == 1 else WHITE, cell,
                              0)
 
