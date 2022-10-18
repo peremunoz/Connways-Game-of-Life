@@ -1,10 +1,8 @@
 # Connway's Game of Life
 
-By Pere Muñoz Figuerol
-
 ## Important note
 
-The game only supports initial states with matrix dimensions of 80x60. You can change this in the `main.cpp` file editing the `WIDTH` and `HEIGHT` constants.
+The game only supports initial states with matrix dimensions of 80x60. You can change this in the `main.py` file editing the `WIDTH` and `HEIGHT` constants.
 The game is not optimized for performance, it is just a proof of concept.
 
 ## Usage
@@ -25,7 +23,7 @@ You can quit the game at any time by pressing the X button on the window.
 
 ## Definition of the initial state
 
-The initial state of the game is defined in the file `initial_state.txt`. The file must contain a matrix of 0s and 1s, separated by a comma, where 0s represent dead cells and 1s represent alive cells. 
+The initial state of the game is defined in the file `initialState.txt`. The file must contain a matrix of 0s and 1s, separated by a comma, where 0s represent dead cells and 1s represent alive cells. 
 
 For example:
 
@@ -35,6 +33,7 @@ For example:
 0,1,0,0,0,1,0,0,0,0
 0,0,1,0,0,0,1,0,0,0
 ```
+Where cells [1,0], [1,3], [1,4], [2,1], [2,5], [3,2], [3,6] are alive and the rest are dead.
 
 ## Output
 
@@ -45,3 +44,23 @@ The output of the program is printed in a graphical window. The window will be u
 The game needs the following library to be installed:
 
 - Pygame
+
+You can install it with the following command:
+
+```bash
+pip3 install pygame
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## Acknowledgments
+
+- [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+- [Pygame](https://www.pygame.org/)
+- [Pygame documentation](https://www.pygame.org/docs/)
+
+## Author
+
+- **Pere Muñoz Figuerol** - [peremunoz]
