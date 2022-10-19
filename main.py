@@ -64,8 +64,7 @@ def main():
                     pygame.quit()
                     quit()
         else:
-            pass
-            # sleep(0.3)
+            sleep(0.3)
         iterations += 1
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
