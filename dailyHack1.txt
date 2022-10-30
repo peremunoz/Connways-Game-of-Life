@@ -25,3 +25,5 @@ Com he trobat la llavor inicial: Totalment a l'atzar. Vaig triar una llavor inic
 representar una flor, i vaig començar a fer proves amb la simulació. A mesura que passaven les iteracions, vaig anar
 apreciant com la llavor inicial es transformava en diferents flors, i aquestes eren esborrades del mapa per la plaga.
 Em va semblar una bona analogia a la vida real, i vaig decidir utilitzar-la.
+
+Les especificacions per la correcta execució del programa estan a l'arxiu readme.me
