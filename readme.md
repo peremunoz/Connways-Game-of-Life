@@ -15,11 +15,11 @@ Where `<execution mode>` can be:
 
 `auto`: Automatic execution mode. It will run the game automatically until the user stops it or the game ends.
 
-`manual`: Manual execution mode. It will run the game step by step until the user stops it or the game ends.
+`manual`: Manual execution mode. It will run the game step by step (pressing any key) until the user stops it or the game ends.
 
 And `random` refers to the initial state of the game. If it is present, the initial state will be random. Otherwise, it will be loaded from the initialState.txt file.
 
-You can quit the game at any time by pressing the X button on the window.
+You can quit the game at any time by pressing the X button of the window.
 
 ## Definition of the initial state
 
