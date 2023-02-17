@@ -1,4 +1,4 @@
-# Pere Muñoz Figuerol - Daily Hack 1 - Connway's Game of Life
+# Pere Muñoz Figuerol - Connway's Game of Life
 import sys
 import random
 from time import sleep
