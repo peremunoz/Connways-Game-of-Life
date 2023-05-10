@@ -7,10 +7,10 @@ The game is not optimized for performance, it is just a proof of concept.
 
 ## Usage
 
+If you have the `pygame` module installed in your machine, just execute the following:
 ```bash
 python3 main.py <execution mode> [random]
 ```
-
 Where `<execution mode>` can be:
 
 `auto`: Automatic execution mode. It will run the game automatically until the user stops it or the game ends.
@@ -20,6 +20,12 @@ Where `<execution mode>` can be:
 And `random` refers to the initial state of the game. If it is present, the initial state will be random. Otherwise, it will be loaded from the initialState.txt file.
 
 You can quit the game at any time by pressing the X button of the window.
+
+If not, you will need to run the program inside the virtual environment. For doing it, execute the following command inside the root folder:
+```bash
+pipenv shell
+```
+Then, execute the python program as specified above.
 
 ## Definition of the initial state
 
